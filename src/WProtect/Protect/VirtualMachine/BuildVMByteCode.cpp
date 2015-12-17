@@ -2529,8 +2529,9 @@ void BuildVMByteCode::build(VCombosVMCode & var_combos_vm_code,ud_t &var_ud)
    switch(ud_insn_mnemonic(&var_ud))
    {
     //Comment ones are the ones processed by lua
-    /*
-    case UD_Inop:
+//#define LUA_MNEMONICS 1
+#ifdef LUA_MNEMONICS
+   case UD_Inop:
        break;
     case UD_Imov:
         {
@@ -2618,7 +2619,7 @@ void BuildVMByteCode::build(VCombosVMCode & var_combos_vm_code,ud_t &var_ud)
         write_vm_operand(var_combos_vm_code,get_operand1(var_ud));
      }
      break;
-    case UD_Isub:
+    case UD_Isub: {
         set_imm_operand_size(get_operand2(var_ud),get_operand1(var_ud));
         vm_operand(var_combos_vm_code,get_operand2(var_ud));
         read_mem(get_operand2(var_ud));
@@ -3808,7 +3809,7 @@ void BuildVMByteCode::build(VCombosVMCode & var_combos_vm_code,ud_t &var_ud)
 
      }
      break;
-     */
+#endif
     case UD_Imovzx:
      {
        for (int i = get_operand2(var_ud).size; i < get_operand1(var_ud).size;i+=8)

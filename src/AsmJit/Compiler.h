@@ -65,6 +65,8 @@ struct TypeToId
 {
 #if defined(ASMJIT_NODOC)
   enum { Id = INVALID_VALUE };
+#else
+  enum { Id = INVALID_VALUE };
 #endif // ASMJIT_NODOC
 };
 

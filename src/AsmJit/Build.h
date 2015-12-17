@@ -52,7 +52,11 @@
 */
 #include <WProtectConfig.h>
 #ifdef PROTECT_X64
+# ifndef _MSC_VER
 # warning "PROTECT_X64"
+# else
+# pragma message("PROTECT_X64")
+# endif
 #define ASMJIT_X64
 #else
 #define ASMJIT_X86
