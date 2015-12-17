@@ -27,7 +27,7 @@ main.cpp
 include_directories(WProtect/Protect/Analysis)
 include_directories(AsmJit)
 include_directories(Libudis86)
-include_directories(Disasm)
+#include_directories(Disasm)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(WProtect/PE)
 include_directories(WProtect/ELF)
@@ -42,7 +42,6 @@ include_directories(WProtect/Analysis)
 #add_subdirectory(Yasm)
 
 #添加执行目录
-add_subdirectory(Disasm)
 add_subdirectory(AsmJit)
 add_subdirectory(Libudis86)  
 add_subdirectory(WProtect)
