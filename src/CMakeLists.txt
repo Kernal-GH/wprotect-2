@@ -6,13 +6,14 @@ Set (Lua_Version "_5.2.2")
 #设置库文件
 if (STATIC_LIBRARY)
 set (LIBS AsmJit_Static Libudis86_Static 
-    PE_Static OutOfOrder_Static 
+    PE_Static
     "Lua${Lua_Version}_Static" Analysis_Static   
     VirtualMachine_Static
     ELF_Static) #LibYasm_Static YasmStd_Static) EquivalentReplacement_Static
 else()
 set (LIBS AsmJit Libudis86
-    PE OutOfOrder "Lua${Lua_Version}"
+    PE 
+"Lua${Lua_Version}"
     VirtualMachine Analysis
     ELF) #LibYasm YasmStd) EquivalentReplacement
 endif ()
@@ -30,7 +31,7 @@ include_directories(Disasm)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 include_directories(WProtect/PE)
 include_directories(WProtect/ELF)
-include_directories(WProtect/Protect/OutOfOrder)
+#include_directories(WProtect/Protect/OutOfOrder)
 include_directories(WProtect/Protect/EquivalentReplacement)
 include_directories(Lua)
 include_directories(WProtect/DataStruct)
