@@ -96,42 +96,50 @@ typedef struct _AddressArray
      a_array = new long[_size];
      a_size = _size;
    }
-   /*
+
    _AddressArray(_AddressArray && rlhs)
    {
      a_array = rlhs.a_array;
-     a_length = rlhs.a_length;
-     rlhs.a_array = NULL;
-   }*/
-   /*
-   _AddressArray(_AddressArray & rlhs)
-   {
-     a_array = rlhs.a_array;
      a_size = rlhs.a_size;
-     rlhs.a_array = NULL; 
-   } */
+     rlhs.a_array = NULL;
+	 rlhs.a_size = 0;
+   }
+
+   _AddressArray(const _AddressArray & rlhs)
+   {
+	_AddressArray(rlhs.a_size);
+     memcpy(a_array, rlhs.a_array, rlhs.a_size);
+   }
    
    ~_AddressArray(){
      if(a_array != NULL)
        delete [] a_array;
    }
+
    long &operator[](size_t _index)
    {
      if (_index >= a_size || a_array == NULL) {
        printf("Address_Array数组访问越界");
      }
      return a_array[_index];
-   }     /*
-   long operator=(_AddressArray & rlhs)
+   }
+
+   _AddressArray& operator=(const _AddressArray & rlhs)
    {
-     a_array = rlhs.a_array;
+     if(&rlhs == this)
+		 return *this;
+
+	 a_array = new long[rlhs.a_size];
      a_size = rlhs.a_size;
-     rlhs.a_array = NULL;   
-   }        */
+	 memcpy(a_array, rlhs.a_array, a_size);
+	 return *this;
+   }
+
    size_t get_size()
    {
      return a_size;
    }
+
    void set_size(size_t _size)
    {
      a_size = _size;
